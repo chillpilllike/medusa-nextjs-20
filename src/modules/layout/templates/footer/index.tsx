@@ -21,15 +21,16 @@ export default async function Footer() {
       />
 
       {/* TrustBox Widget - Micro Review Count */}
-      <div className="trustpilot-widget" 
-        data-locale="en-US" 
-        data-template-id="5419b6a8b0d04a076446a9ad" 
-        data-businessunit-id="63abde420cd64197d7e1c9fa" 
-        data-style-height="24px" 
-        data-style-width="100%" 
-        data-min-review-count="0" 
+      <div
+        className="trustpilot-widget"
+        data-locale="en-US"
+        data-template-id="5419b6a8b0d04a076446a9ad"
+        data-businessunit-id="63abde420cd64197d7e1c9fa"
+        data-style-height="24px"
+        data-style-width="100%"
+        data-min-review-count="0"
         data-style-alignment="center"
-        style={{ textAlign: 'center', margin: '20px 0' }}  // Center the widget with margin
+        style={{ textAlign: 'center', margin: '20px 0' }}
       >
         <a href="https://www.trustpilot.com/review/secretgreen.com.au" target="_blank" rel="noopener">Trustpilot</a>
       </div>
@@ -84,64 +85,63 @@ export default async function Footer() {
         }}
       />
       
-    <footer className="border-t border-ui-border-base w-full">
-      <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
-            <LocalizedClientLink
-              href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
-            >
-              About SecretGreen
-            </LocalizedClientLink>
-             <p className="mt-2 text-ui-fg-subtle text-sm">
+      <footer className="border-t border-ui-border-base w-full">
+        <div className="content-container flex flex-col w-full">
+          <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
+            <div>
+              <LocalizedClientLink
+                href="/"
+                className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              >
+                About SecretGreen
+              </LocalizedClientLink>
+              <p className="mt-2 text-ui-fg-subtle text-sm">
                 Welcome to our store, your go-to destination for high-quality, unique products curated with care. We pride ourselves on delivering exceptional customer service, fast shipping, and a seamless shopping experience.
               </p>
               <p className="mt-2 text-ui-fg-subtle text-sm">
                 Email: support@SecretGreen.com.au
               </p>
-          </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
-            {product_categories && product_categories?.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Categories
-                </span>
-                <ul
-                  className="grid grid-cols-1 gap-2"
-                  data-testid="footer-categories"
-                >
-                  {product_categories?.slice(0, 6).map((c) => {
-                    if (c.parent_category) {
-                      return
-                    }
+            </div>
+            <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
+              {product_categories && product_categories.length > 0 && (
+                <div className="flex flex-col gap-y-2">
+                  <span className="txt-small-plus txt-ui-fg-base">
+                    Categories
+                  </span>
+                  <ul
+                    className="grid grid-cols-1 gap-2"
+                    data-testid="footer-categories"
+                  >
+                    {product_categories.slice(0, 6).map((c) => {
+                      if (c.parent_category) {
+                        return null;
+                      }
 
-                    const children =
-                      c.category_children?.map((child) => ({
-                        name: child.name,
-                        handle: child.handle,
-                        id: child.id,
-                      })) || null
+                      const children =
+                        c.category_children?.map((child) => ({
+                          name: child.name,
+                          handle: child.handle,
+                          id: child.id,
+                        })) || null;
 
-                    return (
-                      <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
-                        key={c.id}
-                      >
-                        <LocalizedClientLink
-                          className={clx(
-                            "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
-                          )}
-                          href={`/categories/${c.handle}`}
-                          data-testid="category-link"
+                      return (
+                        <li
+                          className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
+                          key={c.id}
                         >
-                          {c.name}
-                        </LocalizedClientLink>
-                        {children && (
-                          <ul className="grid grid-cols-1 ml-3 gap-2">
-                            {children &&
-                              children.map((child) => (
+                          <LocalizedClientLink
+                            className={clx(
+                              "hover:text-ui-fg-base",
+                              children && "txt-small-plus"
+                            )}
+                            href={`/categories/${c.handle}`}
+                            data-testid="category-link"
+                          >
+                            {c.name}
+                          </LocalizedClientLink>
+                          {children && (
+                            <ul className="grid grid-cols-1 ml-3 gap-2">
+                              {children.map((child) => (
                                 <li key={child.id}>
                                   <LocalizedClientLink
                                     className="hover:text-ui-fg-base"
@@ -152,84 +152,85 @@ export default async function Footer() {
                                   </LocalizedClientLink>
                                 </li>
                               ))}
-                          </ul>
-                        )}
+                            </ul>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+              {collections && collections.length > 0 && (
+                <div className="flex flex-col gap-y-2">
+                  <span className="txt-small-plus txt-ui-fg-base">
+                    Collections
+                  </span>
+                  <ul
+                    className={clx(
+                      "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
+                      {
+                        "grid-cols-2": collections.length > 3,
+                      }
+                    )}
+                  >
+                    {collections.slice(0, 6).map((c) => (
+                      <li key={c.id}>
+                        <LocalizedClientLink
+                          className="hover:text-ui-fg-base"
+                          href={`/collections/${c.handle}`}
+                        >
+                          {c.title}
+                        </LocalizedClientLink>
                       </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            )}
-            {collections && collections.length > 0 && (
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Collections
-                </span>
-                <ul
-                  className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
-                    {
-                      "grid-cols-2": (collections?.length || 0) > 3,
-                    }
-                  )}
-                >
-                  {collections?.slice(0, 6).map((c) => (
-                    <li key={c.id}>
-                      <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
-                        href={`/collections/${c.handle}`}
-                      >
-                        {c.title}
-                      </LocalizedClientLink>
-                    </li>
-                  ))}
+                <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
+                <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
+                  <li>
+                    <a
+                      href="https://github.com/medusajs"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-ui-fg-base"
+                    >
+                      GitHub
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://docs.medusajs.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-ui-fg-base"
+                    >
+                      Documentation
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/medusajs/nextjs-starter-medusa"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-ui-fg-base"
+                    >
+                      Source code
+                    </a>
+                  </li>
                 </ul>
               </div>
-            )}
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
-                <li>
-                  <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Source code
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
+          <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
+            <Text className="txt-compact-small">
+              © {new Date().getFullYear()} SecretGreen.com.au All rights reserved.
+            </Text>
+            <MedusaCTA />
+          </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
-            © {new Date().getFullYear()} SecretGreen.com.au All rights reserved.
-          </Text>
-          <MedusaCTA />
-        </div>
-      </div>
-    </footer>
-  )
+      </footer>
+    </>
+  );
 }
