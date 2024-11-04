@@ -65,12 +65,8 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
             <p>{product.weight ? `${product.weight} g` : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Dimensions</span>
-            <p>
-              {product.length && product.width && product.height
-                ? `${product.length}L x ${product.width}W x ${product.height}H`
-                : "-"}
-            </p>
+            <span className="font-semibold">Tags</span>
+             <p>{product.tags?.length ? product.tags.map(tag => tag.value).join(", ") : "-"}</p>
           </div>
         </div>
       </div>
