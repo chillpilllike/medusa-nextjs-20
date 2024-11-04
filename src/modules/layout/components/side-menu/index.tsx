@@ -2,7 +2,8 @@
 
 import { Popover, Transition } from "@headlessui/react"
 import { BarsThree, ArrowRightMini, XMark } from "@medusajs/icons"
-import { Text, clx, useToggleState } from "@medusajs/ui"
+import { FocusModal, Heading, Label, Button, Text, clx, useToggleState } from "@medusajs/ui"
+
 import { Fragment } from "react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
