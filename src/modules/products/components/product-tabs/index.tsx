@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import Back from "@modules/common/icons/back"
 import FastDelivery from "@modules/common/icons/fast-delivery"
 import Refresh from "@modules/common/icons/refresh"
@@ -12,6 +13,8 @@ type ProductTabsProps = {
 }
 
 const ProductTabs = ({ product }: ProductTabsProps) => {
+  const [openTabs, setOpenTabs] = useState(["Product Information", "Shipping & Returns"])
+
   const tabs = [
     {
       label: "Product Information",
@@ -23,15 +26,23 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
     },
   ]
 
+  const handleToggle = (label: string) => {
+    setOpenTabs((prev) =>
+      prev.includes(label) ? prev.filter((tab) => tab !== label) : [...prev, label]
+    )
+  }
+
   return (
     <div className="w-full">
-      <Accordion type="multiple" initialValue={tabs.map(tab => tab.label)}>
+      <Accordion type="multiple">
         {tabs.map((tab, i) => (
           <Accordion.Item
             key={i}
             title={tab.label}
             headingSize="medium"
             value={tab.label}
+            isOpen={openTabs.includes(tab.label)}
+            onClick={() => handleToggle(tab.label)}
           >
             {tab.component}
           </Accordion.Item>
