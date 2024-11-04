@@ -1,5 +1,8 @@
 import { Suspense } from "react"
 
+import { ShoppingCart, MagnifyingGlass, User } from "@medusajs/icons"
+import { FocusModal, Heading, Label, Button, Text, clx, useToggleState } from "@medusajs/ui"
+
 import { listRegions } from "@lib/data/regions"
 import { StoreRegion } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -38,7 +41,9 @@ export default async function Nav() {
                   scroll={false}
                   data-testid="nav-search-link"
                 >
-                  Search
+                  <Button variant="secondary">
+            Search <MagnifyingGlass />
+            </Button>
                 </LocalizedClientLink>
               )}
               <LocalizedClientLink
@@ -46,7 +51,9 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                Account
+                <Button variant="secondary">
+            Account <User />
+            </Button>
               </LocalizedClientLink>
             </div>
             <Suspense
