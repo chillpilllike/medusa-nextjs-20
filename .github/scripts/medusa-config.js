@@ -60,7 +60,7 @@ export default defineConfig({
     },
   ],
   admin: {
-    backendUrl: "http://localhost:9000",
+    backendUrl: "https://backend-secretgreen9-backend.anxtya.easypanel.host",
   },
   projectConfig: {
     databaseUrl: DATABASE_URL,
