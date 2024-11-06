@@ -42,7 +42,7 @@ export default async function Nav() {
                   data-testid="nav-search-link"
                 >
                   <Button variant="secondary">
-            Search <MagnifyingGlass />
+            Search <span><MagnifyingGlass /></span>
             </Button>
                 </LocalizedClientLink>
               )}
@@ -52,7 +52,7 @@ export default async function Nav() {
                 data-testid="nav-account-link"
               >
                 <Button variant="secondary">
-            Account <User />
+            Account <span><User /></span>
             </Button>
               </LocalizedClientLink>
             </div>
