@@ -8,7 +8,7 @@ WORKDIR /app
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
 # Build the application
-RUN yarn
+RUN yarn build
 
 # Expose the application port
 EXPOSE 3000
