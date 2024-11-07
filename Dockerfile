@@ -7,9 +7,13 @@ WORKDIR /app
 # Enable Corepack and set the project Yarn version
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
-RUN yarn 
+COPY . .
 
 RUN yarn add sharp
+
+RUN yarn 
+
+
 
 # Expose application port
 EXPOSE 3000
