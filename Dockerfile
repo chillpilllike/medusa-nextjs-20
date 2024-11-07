@@ -4,6 +4,8 @@ WORKDIR /app/medusa-storefront
 
 COPY . .
 
+RUN corepack enable && corepack prepare yarn@3.2.3 --activate
+
 RUN yarn
 
 RUN yarn build
