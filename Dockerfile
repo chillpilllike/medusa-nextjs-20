@@ -4,8 +4,6 @@ FROM node:latest
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and yarn.lock first to leverage Docker cache
-COPY package.json yarn.lock ./
 
 # Enable Corepack and set the project Yarn version
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
