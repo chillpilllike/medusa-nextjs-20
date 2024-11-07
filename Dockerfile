@@ -10,8 +10,6 @@ COPY package.json yarn.lock ./
 # Enable Corepack and set the project Yarn version
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
-# Install dependencies
-RUN yarn install
 
 # Copy the rest of the application files
 COPY . .
