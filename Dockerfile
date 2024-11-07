@@ -7,10 +7,6 @@ WORKDIR /app
 # Enable Corepack and set the project Yarn version
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
-
-
-RUN rm -rf .next
-
 RUN yarn build
 
 RUN yarn add sharp
