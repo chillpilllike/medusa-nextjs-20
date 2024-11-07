@@ -11,8 +11,6 @@ RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
 COPY . .
 
-RUN yarn add sharp
-
 RUN yarn build
 
 # Expose application port
