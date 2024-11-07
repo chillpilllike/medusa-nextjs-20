@@ -16,10 +16,10 @@ COPY . .
 RUN rm -rf .next
 
 # Build the application
-RUN yarn build
+RUN yarn
 
 # Expose the application port
 EXPOSE 3000
 
 # Start the application
-CMD ["yarn", "start"]
+CMD ["yarn", "dev"]
