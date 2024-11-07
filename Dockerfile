@@ -16,14 +16,14 @@ RUN yarn install
 # Copy the rest of the application files
 COPY . .
 
-# Remove any existing .next build folder (optional step based on your project setup)
+# Ensure the .next folder is cleaned up (optional)
 RUN rm -rf .next
 
 # Build the application
 RUN yarn build
 
-# Expose application port
+# Expose the application port
 EXPOSE 3000
 
-# Start the application in production mode
+# Start the application
 CMD ["yarn", "start"]
