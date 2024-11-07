@@ -14,4 +14,4 @@ RUN yarn build
 EXPOSE 3000
 
 # Start the development server
-CMD ["yarn", "start"]
+CMD ["yarn", "dev"]
