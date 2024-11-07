@@ -8,8 +8,6 @@ RUN yarn
 
 RUN yarn build
 
-CMD medusa migrations run && yarn start
-
 # Expose application port
 EXPOSE 3000
 
