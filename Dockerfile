@@ -11,9 +11,7 @@ COPY . .
 
 RUN yarn add sharp
 
-RUN yarn 
-
-
+RUN yarn build
 
 # Expose application port
 EXPOSE 3000
