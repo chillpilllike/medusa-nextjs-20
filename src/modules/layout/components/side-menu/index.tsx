@@ -37,13 +37,13 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
           {({ open, close }) => (
             <>
               <Popover.Button
-                data-testid="nav-menu-button"
-                className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base bg-primary text-white py-2 px-4 rounded"
-              >
-                <div className="flex items-center">
-                  Menu <span><BarsThree /></span>
-                </div>
-              </Popover.Button>
+  data-testid="nav-menu-button"
+  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+>
+  <div className="flex items-center">
+    Menu <span><BarsThree /></span>
+  </div>
+</Popover.Button>
 
               <Transition
                 show={open}
