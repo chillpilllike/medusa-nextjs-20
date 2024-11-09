@@ -1,89 +1,36 @@
 import { Metadata } from "next"
-import { notFound } from "next/navigation"
 
-import ProductTemplate from "@modules/products/templates"
-import { getRegion, listRegions } from "@lib/data/regions"
-import { getProductByHandle, getProductsList } from "@lib/data/products"
+import FeaturedProducts from "@modules/home/components/featured-products"
+import Hero from "@modules/home/components/hero"
+import { getCollectionsWithProducts } from "@lib/data/collections"
+import { getRegion } from "@lib/data/regions"
 
-type Props = {
-  params: { countryCode: string; handle: string }
+export const metadata: Metadata = {
+  title: "Medusa Next.js Starter Template",
+  description:
+    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
 }
 
-export async function generateStaticParams() {
-  const countryCodes = await listRegions().then(
-    (regions) =>
-      regions
-        ?.map((r) => r.countries?.map((c) => c.iso_2))
-        .flat()
-        .filter(Boolean) as string[]
-  )
+export default async function Home({
+  params: { countryCode },
+}: {
+  params: { countryCode: string }
+}) {
+  const collections = await getCollectionsWithProducts(countryCode)
+  const region = await getRegion(countryCode)
 
-  if (!countryCodes) {
+  if (!collections || !region) {
     return null
   }
 
-  const products = await Promise.all(
-    countryCodes.map((countryCode) => {
-      return getProductsList({ countryCode })
-    })
-  ).then((responses) =>
-    responses.map(({ response }) => response.products).flat()
-  )
-
-  const staticParams = countryCodes
-    ?.map((countryCode) =>
-      products.map((product) => ({
-        countryCode,
-        handle: product.handle,
-      }))
-    )
-    .flat()
-
-  return staticParams
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { handle } = params
-  const region = await getRegion(params.countryCode)
-
-  if (!region) {
-    notFound()
-  }
-
-  const product = await getProductByHandle(handle, region.id)
-
-  if (!product) {
-    notFound()
-  }
-
-  return {
-    title: `${product.title} | Medusa Store`,
-    description: `${product.title}`,
-    openGraph: {
-      title: `${product.title} | Medusa Store`,
-      description: `${product.title}`,
-      images: product.thumbnail ? [product.thumbnail] : [],
-    },
-  }
-}
-
-export default async function ProductPage({ params }: Props) {
-  const region = await getRegion(params.countryCode)
-
-  if (!region) {
-    notFound()
-  }
-
-  const pricedProduct = await getProductByHandle(params.handle, region.id)
-  if (!pricedProduct) {
-    notFound()
-  }
-
   return (
-    <ProductTemplate
-      product={pricedProduct}
-      region={region}
-      countryCode={params.countryCode}
-    />
+    <>
+      <Hero />
+      <div className="py-12">
+        <ul className="flex flex-col gap-x-6">
+          <FeaturedProducts collections={collections} region={region} />
+        </ul>
+      </div>
+    </>
   )
 }
