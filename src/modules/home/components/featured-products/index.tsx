@@ -1,5 +1,6 @@
 import { HttpTypes } from "@medusajs/types"
 import ProductRail from "@modules/home/components/featured-products/product-rail"
+import { StoreCollection, StoreRegion } from "@medusajs/types"
 
 export default async function FeaturedProducts({
   collections,
