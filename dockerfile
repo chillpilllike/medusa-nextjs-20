@@ -2,6 +2,10 @@ FROM node:latest
 
 WORKDIR /app/medusa-storefront
 
+RUN apt-get update && \
+    apt-get install -y nano && \
+    rm -rf /var/lib/apt/lists/*
+
 # Copy only package.json and yarn.lock first to leverage Docker layer caching for dependencies
 COPY package.json yarn.lock ./
 
