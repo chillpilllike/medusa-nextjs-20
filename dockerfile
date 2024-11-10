@@ -13,7 +13,7 @@ RUN yarn
 RUN yarn build
 
 # Expose application port
-EXPOSE 3000
+EXPOSE 8000
 
 # Start the development server
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]
