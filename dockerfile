@@ -15,15 +15,12 @@ COPY package.json yarn.lock ./
 # Remove old build files (if they exist) and copy new application files
 RUN rm -rf /app/*
 
-COPY . .
 
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
 RUN rm -rf .next
 
 RUN yarn install
-
-COPY . .
 
 RUN yarn build
 
