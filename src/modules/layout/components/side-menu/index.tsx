@@ -2,7 +2,9 @@
 
 import { Popover, Transition } from "@headlessui/react"
 import { ArrowRightMini, XMark } from "@medusajs/icons"
-import { Text, clx, useToggleState } from "@medusajs/ui"
+import { Button, Text, clx, useToggleState } from "@medusajs/ui"
+import { BarsThree } from "@medusajs/icons"
+
 import { Fragment } from "react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -33,9 +35,8 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                   className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
                 >
                 <Button variant="primary">
-            Menu <User />
+            Menu <BarsThree />
             </Button>
-
                 </Popover.Button>
               </div>
 
