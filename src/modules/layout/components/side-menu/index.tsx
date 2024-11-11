@@ -2,7 +2,7 @@
 
 import { Popover, Transition } from "@headlessui/react"
 import { ArrowRightMini, XMark } from "@medusajs/icons"
-import { Text, clx, useToggleState } from "@medusajs/ui"
+import { Button, Text, clx, useToggleState } from "@medusajs/ui"
 import { Fragment } from "react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -29,8 +29,8 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
             <>
               <div className="relative flex h-full">
                 <Popover.Button
+                  as={Button}
                   data-testid="nav-menu-button"
-                  className="relative inline-flex items-center justify-center w-fit overflow-hidden rounded-md border border-ui-border-base bg-ui-button-neutral text-ui-fg-base transition-all ease-out duration-200 focus:outline-none shadow-buttons-neutral hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient"
                 >
                   Menu
                 </Popover.Button>
