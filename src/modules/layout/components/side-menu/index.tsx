@@ -1,8 +1,8 @@
 "use client"
 
 import { Popover, Transition } from "@headlessui/react"
-import { BarsThree, ArrowRightMini, XMark } from "@medusajs/icons"
-import { Button, Text, clx, useToggleState } from "@medusajs/ui"
+import { ArrowRightMini, XMark } from "@medusajs/icons"
+import { Text, clx, useToggleState } from "@medusajs/ui"
 import { Fragment } from "react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -22,7 +22,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
   const toggleState = useToggleState()
 
   return (
-        <div className="h-full">
+    <div className="h-full">
       <div className="flex items-center h-full">
         <Popover className="h-full flex">
           {({ open, close }) => (
