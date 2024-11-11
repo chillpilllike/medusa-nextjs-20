@@ -7,7 +7,6 @@ import NextJs from "../../../common/icons/nextjs"
 const MedusaCTA = () => {
   return (
     <Text className="flex gap-x-2 txt-compact-small-plus items-center">
-      Encrypted Payments, Secure Peace of Mind. 
 <IconBadge>
   <Stripe />
 </IconBadge>
@@ -23,6 +22,7 @@ const MedusaCTA = () => {
 <IconBadge>
   <VerifiedBadge />
 </IconBadge>
+- Secure & Encrypted.
  </Text>
   )
 }
