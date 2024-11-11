@@ -1,3 +1,5 @@
+"use client"; // Mark this component as a Client Component
+
 import { getCategoriesList } from "@lib/data/categories"
 import { getCollectionsList } from "@lib/data/collections"
 import { Text, clx, FocusModal, Button } from "@medusajs/ui"
