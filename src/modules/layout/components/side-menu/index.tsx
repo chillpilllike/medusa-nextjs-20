@@ -1,7 +1,7 @@
 "use client"
 
 import { Popover, Transition } from "@headlessui/react"
-import { ArrowRightMini, XMark } from "@medusajs/icons"
+import { BarsThree, ArrowRightMini, XMark } from "@medusajs/icons"
 import { Button, Text, clx, useToggleState } from "@medusajs/ui"
 import { Fragment } from "react"
 
@@ -22,17 +22,19 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
   const toggleState = useToggleState()
 
   return (
-    <div className="h-full">
+     <div className="h-full">
       <div className="flex items-center h-full">
         <Popover className="h-full flex">
           {({ open, close }) => (
             <>
               <div className="relative flex h-full">
                 <Popover.Button
-                  as={Button}
                   data-testid="nav-menu-button"
+                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
                 >
-                  Menu
+                  <Button variant="secondary">
+            Menu <span><BarsThree /></span>
+            </Button>
                 </Popover.Button>
               </div>
 
