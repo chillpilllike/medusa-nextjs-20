@@ -1,6 +1,6 @@
 import { getCategoriesList } from "@lib/data/categories"
 import { getCollectionsList } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
+import { IconBadge, Text, clx } from "@medusajs/ui"
 import Script from "next/script"
 
 
