@@ -99,7 +99,9 @@ export default async function Footer() {
                 Welcome to our store, your go-to destination for high-quality, unique products curated with care. We pride ourselves on delivering exceptional customer service, fast shipping, and a seamless shopping experience.
               </p>
               <p className="mt-2 text-ui-fg-subtle text-sm">
-                Email: support@SecretGreen.com.au
+                <IconBadge>
+      <AtSymbol />
+    </IconBadge> support@SecretGreen.com.au
               </p>
             </div>
             <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
