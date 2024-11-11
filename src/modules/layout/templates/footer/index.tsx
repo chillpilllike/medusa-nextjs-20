@@ -1,15 +1,18 @@
 import { getCategoriesList } from "@lib/data/categories"
 import { getCollectionsList } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
+import { Text, clx, FocusModal, Button } from "@medusajs/ui"
 import Script from "next/script"
-
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
+import { useState } from "react";
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)
   const { product_categories } = await getCategoriesList(0, 6)
+
+  // State to manage modal visibility
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   return (
     <>
@@ -103,101 +106,17 @@ export default async function Footer() {
               </p>
             </div>
             <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
-              {product_categories && product_categories.length > 0 && (
-                <div className="flex flex-col gap-y-2">
-                  <span className="txt-small-plus txt-ui-fg-base">
-                    Categories
-                  </span>
-                  <ul
-                    className="grid grid-cols-1 gap-2"
-                    data-testid="footer-categories"
-                  >
-                    {product_categories.slice(0, 6).map((c) => {
-                      if (c.parent_category) {
-                        return null;
-                      }
-
-                      const children =
-                        c.category_children?.map((child) => ({
-                          name: child.name,
-                          handle: child.handle,
-                          id: child.id,
-                        })) || null;
-
-                      return (
-                        <li
-                          className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
-                          key={c.id}
-                        >
-                          <LocalizedClientLink
-                            className={clx(
-                              "hover:text-ui-fg-base",
-                              children && "txt-small-plus"
-                            )}
-                            href={`/categories/${c.handle}`}
-                            data-testid="category-link"
-                          >
-                            {c.name}
-                          </LocalizedClientLink>
-                          {children && (
-                            <ul className="grid grid-cols-1 ml-3 gap-2">
-                              {children.map((child) => (
-                                <li key={child.id}>
-                                  <LocalizedClientLink
-                                    className="hover:text-ui-fg-base"
-                                    href={`/categories/${child.handle}`}
-                                    data-testid="category-link"
-                                  >
-                                    {child.name}
-                                  </LocalizedClientLink>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )}
-              {collections && collections.length > 0 && (
-                <div className="flex flex-col gap-y-2">
-                  <span className="txt-small-plus txt-ui-fg-base">
-                    Collections
-                  </span>
-                  <ul
-                    className={clx(
-                      "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
-                      {
-                        "grid-cols-2": collections.length > 3,
-                      }
-                    )}
-                  >
-                    {collections.slice(0, 6).map((c) => (
-                      <li key={c.id}>
-                        <LocalizedClientLink
-                          className="hover:text-ui-fg-base"
-                          href={`/collections/${c.handle}`}
-                        >
-                          {c.title}
-                        </LocalizedClientLink>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              {/* Categories and collections code... */}
               <div className="flex flex-col gap-y-2">
                 <span className="txt-small-plus txt-ui-fg-base">Useful info.</span>
                 <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                   <li>
-                    <a
-                      href="/privacy-policy"
-                      target="_blank"
-                      rel="noreferrer"
+                    <button
+                      onClick={() => setIsPrivacyModalOpen(true)}
                       className="hover:text-ui-fg-base"
                     >
                       Privacy policy
-                    </a>
+                    </button>
                   </li>
                   <li>
                     <a
@@ -238,7 +157,7 @@ export default async function Footer() {
                     >
                       Contact us
                     </a>
-                    </li>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -251,6 +170,15 @@ export default async function Footer() {
           </div>
         </div>
       </footer>
+
+      {/* Privacy Policy Modal */}
+      <FocusModal open={isPrivacyModalOpen} onOpenChange={setIsPrivacyModalOpen}>
+        <FocusModal.Content>
+          <FocusModal.Body className="flex flex-col items-center py-16">
+            <Text className="text-ui-fg-base">This is a privacy policy.</Text>
+          </FocusModal.Body>
+        </FocusModal.Content>
+      </FocusModal>
     </>
   );
 }
