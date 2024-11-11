@@ -1,7 +1,7 @@
 "use client"
 
 import { Popover, Transition } from "@headlessui/react"
-import { BarsThree, ArrowRightMini, XMark } from "@medusajs/icons"
+import { ArrowRightMini, XMark } from "@medusajs/icons"
 import { Text, clx, useToggleState } from "@medusajs/ui"
 import { Fragment } from "react"
 
@@ -29,8 +29,8 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
               <div className="relative flex h-full">
                 <Popover.Button
                   data-testid="nav-menu-button"
-className="inline-flex items-center px-4 py-2 border border-gray-400 bg-gray-600 text-white rounded-md transition-all ease-out duration-200 focus:outline-none hover:bg-gray-700 hover:border-gray-500"                >
-                  Menu<BarsThree />
+class="transition-fg relative inline-flex w-fit items-center justify-center overflow-hidden rounded-md outline-none disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled disabled:shadow-buttons-neutral disabled:after:hidden after:transition-fg after:absolute after:inset-0 after:content-[''] shadow-buttons-inverted text-ui-contrast-fg-primary bg-ui-button-inverted after:button-inverted-gradient hover:bg-ui-button-inverted-hover hover:after:button-inverted-hover-gradient active:bg-ui-button-inverted-pressed active:after:button-inverted-pressed-gradient focus-visible:!shadow-buttons-inverted-focus txt-compact-small-plus gap-x-1.5 px-3 py-1.5"                >
+                  Menu
                 </Popover.Button>
               </div>
 
@@ -90,7 +90,7 @@ className="inline-flex items-center px-4 py-2 border border-gray-400 bg-gray-600
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Secretgreen. All rights
+                        © {new Date().getFullYear()} Online Store. All rights
                         reserved.
                       </Text>
                     </div>
