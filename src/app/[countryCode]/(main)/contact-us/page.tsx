@@ -1,5 +1,5 @@
-import { Heading, Text } from "@medusajs/ui";
-import React from "react";
+import { Heading, Text, Button } from "@medusajs/ui"; // Imported Button
+import React, { useEffect } from "react"; // Imported useEffect
 import { Metadata } from "next";
 import Script from "next/script"; // Import the Script component from Next.js
 
@@ -11,6 +11,21 @@ export const metadata: Metadata = {
 };
 
 const ContactUs = () => {
+  useEffect(() => {
+    // Ensure the Reamaze script is loaded (assuming it's included in the <head> of your HTML)
+    if (!window.Reamaze) {
+      console.error("Reamaze is not loaded. Make sure the Reamaze script is included.");
+    }
+  }, []);
+
+  const handleChatClick = () => {
+    if (window.Reamaze) {
+      window.Reamaze.popup();
+    } else {
+      console.error("Reamaze is not available");
+    }
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
@@ -44,6 +59,10 @@ const ContactUs = () => {
           Click on the chat icon in the bottom right corner to start a live chat
           with one of our customer service representatives.
         </p>
+        {/* Chat with us Button */}
+        <Button variant="danger" onClick={handleChatClick}>
+          Chat with us
+        </Button>
       </div>
 
       {/* Reamaze Script for Loader */}
