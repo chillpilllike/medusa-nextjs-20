@@ -1,22 +1,13 @@
-"use client";
+"use client"
 
-import { Popover, Transition } from "@headlessui/react";
-import { BarsThree, ArrowRightMini, XMark } from "@medusajs/icons";
-import {
-  FocusModal,
-  Heading,
-  Label,
-  Button,
-  Text,
-  clx,
-  useToggleState,
-} from "@medusajs/ui";
+import { Popover, Transition } from "@headlessui/react"
+import { ArrowRightMini, XMark } from "@medusajs/icons"
+import { Text, clx, useToggleState } from "@medusajs/ui"
+import { Fragment } from "react"
 
-import { Fragment } from "react";
-
-import LocalizedClientLink from "@modules/common/components/localized-client-link";
-import CountrySelect from "../country-select";
-import { HttpTypes } from "@medusajs/types";
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import CountrySelect from "../country-select"
+import { HttpTypes } from "@medusajs/types"
 
 const SideMenuItems = {
   Home: "/",
@@ -24,26 +15,25 @@ const SideMenuItems = {
   Search: "/search",
   Account: "/account",
   Cart: "/cart",
-  Contact: "/contact-us",
-};
+}
 
 const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
-  const toggleState = useToggleState();
+  const toggleState = useToggleState()
 
   return (
     <div className="h-full">
       <div className="flex items-center h-full">
-        <Popover>
+        <Popover className="h-full flex">
           {({ open, close }) => (
             <>
-              <Popover.Button
-                data-testid="nav-menu-button"
-                className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              >
-                <div className="flex items-center">
-                  Menu <span><BarsThree /></span>
-                </div>
-              </Popover.Button>
+              <div className="relative flex h-full">
+                <Popover.Button
+                  data-testid="nav-menu-button"
+                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
+                >
+                  Menu
+                </Popover.Button>
+              </div>
 
               <Transition
                 show={open}
@@ -66,18 +56,20 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                       </button>
                     </div>
                     <ul className="flex flex-col gap-6 items-start justify-start">
-                      {Object.entries(SideMenuItems).map(([name, href]) => (
-                        <li key={name}>
-                          <LocalizedClientLink
-                            href={href}
-                            className="text-3xl leading-10 hover:text-ui-fg-disabled"
-                            onClick={close}
-                            data-testid={`${name.toLowerCase()}-link`}
-                          >
-                            {name}
-                          </LocalizedClientLink>
-                        </li>
-                      ))}
+                      {Object.entries(SideMenuItems).map(([name, href]) => {
+                        return (
+                          <li key={name}>
+                            <LocalizedClientLink
+                              href={href}
+                              className="text-3xl leading-10 hover:text-ui-fg-disabled"
+                              onClick={close}
+                              data-testid={`${name.toLowerCase()}-link`}
+                            >
+                              {name}
+                            </LocalizedClientLink>
+                          </li>
+                        )
+                      })}
                     </ul>
                     <div className="flex flex-col gap-y-6">
                       <div
@@ -99,7 +91,8 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} All rights reserved.
+                        © {new Date().getFullYear()} Secretgreen. All rights
+                        reserved.
                       </Text>
                     </div>
                   </div>
@@ -110,7 +103,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
         </Popover>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SideMenu;
+export default SideMenu
