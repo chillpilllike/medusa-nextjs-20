@@ -24,6 +24,10 @@ const MedusaCTA = () => {
 </IconBadge>
 - Secure & Encrypted.
  </Text>
+    <Text className="flex gap-x-2 txt-compact-small-plus items-center">
+Verified & Encrypted
+ </Text>
+
   )
 }
 
