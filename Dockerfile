@@ -18,7 +18,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 
 
-RUN yarn install 
+RUN yarn
 RUN yarn build
 
 # If using npm comment out above and use below instead
