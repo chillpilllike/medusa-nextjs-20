@@ -9,7 +9,6 @@ WORKDIR /app
 RUN corepack enable && corepack prepare yarn@stable --activate
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
