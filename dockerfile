@@ -7,6 +7,8 @@ WORKDIR /app/medusa-storefront
 # Copy only package.json and yarn.lock to leverage Docker layer caching for dependencies
 COPY package.json yarn.lock ./
 
+COPY . .
+
 # Enable corepack and set the Yarn version
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
@@ -15,7 +17,7 @@ RUN rm -rf node_modules .next
 RUN yarn
 
 # Copy all application files
-# COPY . .
+
 
 # Build the project
 RUN yarn build
