@@ -18,7 +18,7 @@ COPY package.json yarn.lock
 FROM base AS builder
 WORKDIR /app
 
-RUN yarn 
+RUN yarn install
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
