@@ -20,7 +20,6 @@ WORKDIR /app
 
 RUN yarn install
 
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
