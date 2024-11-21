@@ -4,11 +4,6 @@ FROM node:latest
 # Set the working directory
 WORKDIR /app/medusa-storefront
 
-# Update and install nano
-RUN apt-get update && \
-    apt-get install -y nano && \
-    rm -rf /var/lib/apt/lists/*
-
 # Copy only package.json and yarn.lock to leverage Docker layer caching for dependencies
 COPY package.json yarn.lock ./
 
@@ -17,7 +12,7 @@ RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
 # Install dependencies
 RUN rm -rf node_modules .next
-RUN yarn install --immutable --inline-builds
+RUN yarn
 
 # Copy all application files
 COPY . .
