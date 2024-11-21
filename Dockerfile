@@ -18,8 +18,6 @@ COPY package.json yarn.lock
 FROM base AS builder
 WORKDIR /app
 
-RUN yarn install
-
 COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
