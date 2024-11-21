@@ -33,18 +33,9 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+EXPOSE 8000
 
-
-# Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-
-EXPOSE 3000
-
-ENV PORT 3000
+ENV PORT 8000
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
