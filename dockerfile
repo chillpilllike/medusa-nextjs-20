@@ -15,7 +15,7 @@ RUN rm -rf node_modules .next
 RUN yarn
 
 # Copy all application files
-COPY . .
+# COPY . .
 
 # Build the project
 RUN yarn build
