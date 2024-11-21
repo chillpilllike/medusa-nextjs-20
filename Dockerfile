@@ -6,6 +6,8 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+COPY . .
+
 RUN corepack enable && corepack prepare yarn@stable --activate
 
 # Install dependencies based on the preferred package manager
