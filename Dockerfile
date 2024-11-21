@@ -6,6 +6,7 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+RUN corepack enable && corepack prepare yarn@stable --activate
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock
@@ -16,7 +17,7 @@ COPY package.json yarn.lock
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN corepack enable && corepack prepare yarn@stable --activate
+
 
 RUN yarn install 
 RUN yarn build
