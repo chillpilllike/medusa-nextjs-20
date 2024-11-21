@@ -17,6 +17,9 @@ COPY package.json yarn.lock
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
+
+RUN yarn 
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
