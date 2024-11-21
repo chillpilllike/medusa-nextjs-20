@@ -19,7 +19,7 @@ RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 RUN yarn install
 
 # Remove any old build files
-RUN rm -rf .next
+RUN rm -rf .next node_modules
 
 # Copy all application files
 COPY . .
