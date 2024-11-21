@@ -16,10 +16,8 @@ COPY package.json yarn.lock ./
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
 # Install dependencies
-RUN yarn install
-
-# Remove any old build files
-RUN rm -rf .next node_modules
+RUN rm -rf node_modules .next yarn.lock
+RUN yarn install --immutable
 
 # Copy all application files
 COPY . .
