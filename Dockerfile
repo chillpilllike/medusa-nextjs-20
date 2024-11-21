@@ -9,8 +9,6 @@ WORKDIR /app
 
 RUN corepack enable && corepack prepare yarn@3.2.3 --activate
 
-RUN yarn add awilix react-hook-form
-
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
