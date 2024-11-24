@@ -8,9 +8,5 @@ name = "BP_NODE_VERSION"
 value = "19.9.0"
 
 [[build.env]]
-name = "BP_YARN_VERSION"
-value = "1.22.22"
-
-[[build.env]]
 name = "BP_NPM_INSTALL_OPTS"
 value = "--legacy-peer-deps" # Optional: Adjust npm options if needed
