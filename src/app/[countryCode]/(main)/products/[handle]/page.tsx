@@ -6,6 +6,8 @@ import { getRegion, listRegions } from "@lib/data/regions"
 import { getProductByHandle } from "@lib/data/products"
 import { sdk } from "@lib/config"
 
+export const dynamic = "force-dynamic"
+
 type Props = {
   params: { countryCode: string; handle: string }
 }
