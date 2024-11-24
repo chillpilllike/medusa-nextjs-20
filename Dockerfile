@@ -11,7 +11,7 @@ COPY . .
 RUN corepack enable && corepack prepare yarn@stable --activate
 
 RUN yarn add sharp
-RUN yarn add @hcaptcha/react-hcaptcha
+# RUN yarn add @hcaptcha/react-hcaptcha
 
 # Install dependencies based on the preferred package manager
 
