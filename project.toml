@@ -5,7 +5,7 @@ version = "1.0.0"
 
 [[build.env]]
 name = "BP_NODE_VERSION"
-value = "20.*"
+value = "18.*"
 
 [[build.env]]
 name = "BP_YARN_VERSION"
