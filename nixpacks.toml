@@ -2,21 +2,18 @@
 runtime = "nodejs_20"
 
 [install]
-# Custom install commands (optional)
 commands = [
   "corepack enable",
-  "corepack prepare yarn@stable --activate"
+  "corepack prepare yarn@stable --activate",
+  "yarn install"
 ]
 
 [build]
-# Custom build command
 commands = [
-  "yarn install --check-cache",
   "yarn run build"
 ]
 
 [start]
-# Custom start command
 commands = [
   "yarn run start"
 ]
