@@ -43,6 +43,9 @@ const Review = ({ cart }: { cart: any }) => {
                 Returns Policy and acknowledge that you have read our
                 Store&apos;s Privacy Policy.
               </Text>
+              <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                Card payments are processed immediately. PayID or bank transfer orders receive instructions and are processed after payment clears.
+              </Text>
             </div>
           </div>
           <PaymentButton cart={cart} data-testid="submit-order-button" />
