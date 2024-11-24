@@ -61,5 +61,5 @@
     "tailwindcss": "^3.0.23",
     "typescript": "^5.3.2"
   },
-  "packageManager": "yarn@latest"
+  "packageManager": "yarn@3.2.3"
 }
