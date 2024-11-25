@@ -6,6 +6,8 @@ COPY . .
 
 RUN corepack enable && corepack prepare yarn@stable --activate
 
+RUN npm i sharp
+
 RUN yarn install
 
 RUN yarn build
